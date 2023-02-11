@@ -17,6 +17,17 @@ const nextConfig = {
 
     return compilerConfig    
   })(),
+
+  async rewrites() {
+    return [
+      {
+        // ex. /api/proxy
+        source: `${process.env.NEXT_PUBLIC_API_BASR_PATH}/:match*`,
+        // ex. http://localhost:8000
+        description: `${process.env.API_BASE_URL}/:match*`,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
